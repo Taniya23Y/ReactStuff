@@ -1,9 +1,10 @@
 import "./App.css";
 import Item from "./components/Item";
 import ItemDate from "./components/ItemDate";
+import Card from "./components/Card";
 
 const App = () => {
-  const itemTwoName = "SurfExcel";
+  // const itemTwoName = "SurfExcel";
 
   const response = [
     {
@@ -13,22 +14,44 @@ const App = () => {
       itemYear: 1998,
     },
     {
-      itemName: "Nirma",
-      itemDate: 20,
-      itemMonth: "June",
-      itemYear: 1998,
+      itemName: "SurfExcel",
+      itemDate: 22,
+      itemMonth: "July",
+      itemYear: 1999,
     },
-    { itemName: "Nirma", itemDate: 20, itemMonth: "June", itemYear: 1998 },
+    {
+      itemName: "Fena",
+      itemDate: 24,
+      itemMonth: "August",
+      itemYear: 2000,
+    },
   ];
   return (
     <div>
-      <Item name="Nirma"></Item>
-      <ItemDate day="20" month="June" year="1998"></ItemDate>
-      <Item name={itemTwoName}></Item>
-      <ItemDate day="22" month="July" year="1999"></ItemDate>
-      <Item name="Fena"></Item>
-      <ItemDate day="24" month="August" year="2000"></ItemDate>
-      <div className="App">Hello ReactFolio</div>;
+      <Card>
+        <Item name={response[0].itemName}>
+          Hello everyone I am first Item (children Props).
+        </Item>
+        <ItemDate
+          day={response[0].itemDate}
+          month={response[0].itemMonth}
+          year={response[0].itemYear}
+        ></ItemDate>
+        <Item name={response[1].itemName}></Item>
+        <ItemDate
+          day={response[1].itemDate}
+          month={response[1].itemMonth}
+          year={response[1].itemYear}
+        ></ItemDate>
+        <Item name={response[2].itemName}></Item>
+        <ItemDate
+          day={response[2].itemDate}
+          month={response[2].itemMonth}
+          year={response[2].itemYear}
+        ></ItemDate>
+        <div className="App">Hello ReactFolio</div>;
+      </Card>
+      ;
     </div>
   );
 };

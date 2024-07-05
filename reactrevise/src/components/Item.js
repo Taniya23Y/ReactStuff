@@ -5,6 +5,7 @@ const Item = (props) => {
   return (
     <div className="Item">
       <p className="nirma">{itemName}</p>
+      {props.children}
     </div>
   );
 };
