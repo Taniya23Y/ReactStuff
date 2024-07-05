@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Item from "./components/Item";
+import ItemDate from "./components/ItemDate";
 
-function App() {
+const App = () => {
+  const itemTwoName = "SurfExcel";
+
+  const response = [
+    {
+      itemName: "Nirma",
+      itemDate: 20,
+      itemMonth: "June",
+      itemYear: 1998,
+    },
+    {
+      itemName: "Nirma",
+      itemDate: 20,
+      itemMonth: "June",
+      itemYear: 1998,
+    },
+    { itemName: "Nirma", itemDate: 20, itemMonth: "June", itemYear: 1998 },
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Item name="Nirma"></Item>
+      <ItemDate day="20" month="June" year="1998"></ItemDate>
+      <Item name={itemTwoName}></Item>
+      <ItemDate day="22" month="July" year="1999"></ItemDate>
+      <Item name="Fena"></Item>
+      <ItemDate day="24" month="August" year="2000"></ItemDate>
+      <div className="App">Hello ReactFolio</div>;
     </div>
   );
-}
+};
 
 export default App;
