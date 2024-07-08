@@ -1,10 +1,12 @@
 import React from "react";
+
 import "./ProductDate.css";
 
 const ProductDate = (props) => {
-  const month = props.date.toLocalString("en-us", { month: "long" });
-  const day = props.date.toLocalString("en-us", { day: "2-digit" });
+  const month = props.date.toLocaleString("en-US", { month: "long" });
+  const day = props.date.toLocaleString("en-US", { day: "2-digit" });
   const year = props.date.getFullYear();
+
   return (
     <div className="product-date">
       <div className="product-date__month">{month}</div>
