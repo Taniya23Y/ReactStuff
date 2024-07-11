@@ -1,53 +1,61 @@
-import { useEffect, useState } from "react";
 import "./App.css";
+import Navbar from "./components/Navbar";
+import Filter from "./components/Filter";
+import Cards from "./components/Cards";
+import { apiUrl, filterData } from "./data";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import Spinner from "./components/Spinner";
 
-function App() {
-  const [text, setText] = useState("");
-  const [name, setName] = useState("Taniya");
+const App = () => {
+  // const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [category, setCategory] = useState(filterData[0].title);
 
-  // jis bhi component ke ander aap useEffect Hook likhte hain, Vo uss component ke render hone ke baad eske ander jo bhi code likha hoga use run karega.
-
-  // Variation - 1 => Every Render it Runs
-  //* useEffect(() => {
-  //*   console.log("UI Rendering Done");
-  //* });
-
-  // Variation - 2 => Every Render it Runs
-  // [] => it shows dependency list
-  //*useEffect(() => {
-  //*  console.log("UI Rendering Done");
-  //*}, []);
-
-  // Variation - 3 => whenever dependency changes, it Runs
-  //* useEffect(() => {
-  //*   console.log("Change Observed");
-  //* }, [name]);
-
-  // Variation - 4 => to handle unmounting of a component
-  useEffect(() => {
-    // add event listener
-    console.log("listener added");
-
-    return () => {
-      console.log("listener removed");
-    };
-  }, [text]);
-
-  // changeHandler function
-  function changeHandler(event) {
-    console.log(text);
-    setText(event.target.value);
+  async function fetchData() {
+    setLoading(true);
+    try {
+      const response = await fetch(apiUrl);
+      const output = await response.json();
+      // save data into a variable
+      setCourses(output.data);
+    } catch {
+      toast.error("Something went wrong");
+    }
+    setLoading(false);
   }
 
+  useEffect(() => {
+    fetchData();
+  });
+
   return (
-    <div className="App">
-      <input
-        type="text"
-        className="border-red-700 p-12px bg-slate-500 text-white text-5xl"
-        onChange={changeHandler}
-      ></input>
+    <div className="App bg-slate-300 min-h-screen flex flex-col">
+      <div>
+        <Navbar />
+      </div>
+      <div className="bg-slate-300">
+        <div>
+          <Filter
+            filterData={filterData}
+            category={category}
+            setCategory={setCategory}
+          />
+        </div>
+        <div className="w-11/12 flex flex-wrap max-w-[1200px] mx-auto justify-center items-center min-h-[50vh]">
+          {/* {loading ? <Spinner /> : <Cards courses={courses} />} */}
+          {/* {loading ? (
+            <Cards courses={courses} category={category} />
+          ) : (
+            <Spinner />
+          )} */}
+
+          <Cards courses={courses} category={category} />
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
