@@ -5,7 +5,6 @@ import Cards from "./components/Cards";
 import { apiUrl, filterData } from "./data";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import Spinner from "./components/Spinner";
 
 const App = () => {
   // const [courses, setCourses] = useState([]);
@@ -21,7 +20,7 @@ const App = () => {
       // save data into a variable
       setCourses(output.data);
     } catch {
-      toast.error("Something went wrong");
+      // toast.error("Something went wrong");
     }
     setLoading(false);
   }

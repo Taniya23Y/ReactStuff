@@ -51,7 +51,6 @@ const App = () => {
         ></ItemDate>
         <div className="App">Hello ReactFolio</div>;
       </Card>
-      ;
     </div>
   );
 };
