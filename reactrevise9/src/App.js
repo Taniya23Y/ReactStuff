@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Login from "./pages/login";
 import SignUp from "./pages/SignUp";
 import DashBoard from "./pages/DashBoard";
+import PrivateRoute from "./pages/PrivateRoute";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,7 +27,14 @@ function App() {
             path="/signup"
             element={<SignUp setIsLoggedIn={setIsLoggedIn} />}
           />
-          <Route path="/dashboard" element={<DashBoard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute isLoggedIn={isLoggedIn}>
+                <DashBoard />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </div>
     </div>
