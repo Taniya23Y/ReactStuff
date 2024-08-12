@@ -7,10 +7,10 @@ function SignUp({ setIsLoggedIn }) {
     <div className="text-white ">
       <Template
         title="Welcome Back"
-        desc1="Build Skills for today, tomorrow, and beyond."
+        desc1="Join the millions learning to code with StudyNotion for free."
         desc2="Education to future-proof your Career."
         image={signupImg}
-        formtype="login"
+        formType="signup"
         setIsLoggedIn={setIsLoggedIn}
       />
     </div>

@@ -11,15 +11,21 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <div className="App bg-[#000814] w-full h-full">
+    <div className="App bg-[#000814] w-screen  min-h-screen flex flex-col">
       <div>
         <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 
         {/* Routes  */}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/login"
+            element={<Login setIsLoggedIn={setIsLoggedIn} />}
+          />
+          <Route
+            path="/signup"
+            element={<SignUp setIsLoggedIn={setIsLoggedIn} />}
+          />
           <Route path="/dashboard" element={<DashBoard />} />
         </Routes>
       </div>
