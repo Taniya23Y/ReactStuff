@@ -6,7 +6,7 @@ const Blogs = () => {
   // consume
   const { posts, loading } = useContext(AppContext);
   return (
-    <div className="w-11/12 max-w-[670px] py-8 flex flex-col gap-y-7 mt-[65px] mb-[70px]">
+    <div className="w-11/12 max-w-[670px] py-8 flex justify-center items-center mx-auto flex-col gap-y-7 mt-[65px] mb-[70px]">
       {loading ? (
         <div className="min-h-[80vh] w-full flex justify-center items-center">
           <p className="text-center font-bold text-3xl">
